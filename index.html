@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WorkSpace</title>
+
+  <link rel="stylesheet" href="index.css">
+
+  <script src="js/choices.min.js" defer></script>
+  <script src="js/script.js" defer></script>
 </head>
 <body>
   <header class="header">
@@ -24,7 +29,9 @@
     </section>
 
     <div class="vacancies" id="vacancies">
-      <div class="container">
+      <div class="container vacancies__container">
+        <button class="vacancies__filter-btn">Фильтр</button>
+
         <section class="vacancies__filter filter">
           <h2 class="filter__title">Фильтр</h2>
   
@@ -48,21 +55,21 @@
                 </div>
               </fieldset>
   
-              <div class="filter__ckeckboxes">
+              <div class="filter__checkboxes">
                 <fieldset class="filter__fieldset">
                   <legend class="filter__legend">Формат</legend>
   
-                  <label class="filter__ckeckbox checkbox">
+                  <label class="filter__label checkbox">
                     <input class="checkbox__input" type="checkbox" name="format" value="Офис">
                     Офис
                   </label>
   
-                  <label class="filter__ckeckbox checkbox">
+                  <label class="filter__label checkbox">
                     <input class="checkbox__input" type="checkbox" name="format" value="Удаленный">
                     Удаленный
                   </label>
   
-                  <label class="filter__ckeckbox checkbox">
+                  <label class="filter__label checkbox">
                     <input class="checkbox__input" type="checkbox" name="format" value="Гибкий">
                     Гибкий
                   </label>
@@ -71,22 +78,22 @@
                 <fieldset class="filter__fieldset">
                   <legend class="filter__legend">Опыт работы</legend>
   
-                  <label class="filter__ckeckbox checkbox">
+                  <label class="filter__label checkbox">
                     <input class="checkbox__input" type="checkbox" name="experience" value="Не важно">
                     Не важно
                   </label>
   
-                  <label class="filter__ckeckbox checkbox">
+                  <label class="filter__label checkbox">
                     <input class="checkbox__input" type="checkbox" name="experience" value="Без опыта">
                     Без опыта
                   </label>
   
-                  <label class="filter__ckeckbox checkbox">
+                  <label class="filter__label checkbox">
                     <input class="checkbox__input" type="checkbox" name="experience" value="От 1 года до 3-х лет">
                     От 1 года до 3-х лет
                   </label>
   
-                  <label class="filter__ckeckbox checkbox">
+                  <label class="filter__label checkbox">
                     <input class="checkbox__input" type="checkbox" name="experience" value="От 3-х лет">
                     От 3-х лет
                   </label>
@@ -95,22 +102,22 @@
                 <fieldset class="filter__fieldset">
                   <legend class="filter__legend">Занятость</legend>
   
-                  <label class="filter__ckeckbox checkbox">
+                  <label class="filter__label checkbox">
                     <input class="checkbox__input" type="checkbox" name="type" value="Полная">
                     Полная
                   </label>
   
-                  <label class="filter__ckeckbox checkbox">
+                  <label class="filter__label checkbox">
                     <input class="checkbox__input" type="checkbox" name="type" value="Частичная">
                     Частичная
                   </label>
   
-                  <label class="filter__ckeckbox checkbox">
+                  <label class="filter__label checkbox">
                     <input class="checkbox__input" type="checkbox" name="type" value="Стажировка">
                     Стажировка
                   </label>
   
-                  <label class="filter__ckeckbox checkbox">
+                  <label class="filter__label checkbox">
                     <input class="checkbox__input" type="checkbox" name="type" value="Проектная работа">
                     Проектная работа
                   </label>
@@ -185,7 +192,7 @@
   </main>
   <footer class="footer">
     <div class="container footer__container">
-      <img src="images/logo-footer.svg" alt="Логотип WorkSpace">
+      <img class="footer__logo" src="images/logo-footer.svg" alt="Логотип WorkSpace">
 
       <p class="footer__copyright">© Work Space, 2023</p>
 
