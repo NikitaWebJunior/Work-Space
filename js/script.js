@@ -34,7 +34,7 @@ const createCard = (vacancy) => `
   <h3 class="vacancy__title">${vacancy.title}</h3>
 
   <ul class="vacancy__fields">
-    <li class="vacancy__field">от ${+vacancy.salary.toLocaleString()}₽</li>
+    <li class="vacancy__field">от ${parseInt(vacancy.salary).toLocaleString("fr")}₽</li>
     <li class="vacancy__field">${vacancy.format}</li>
     <li class="vacancy__field">${vacancy.type}</li>
     <li class="vacancy__field">${vacancy.experience}</li>
@@ -65,6 +65,58 @@ const renderVacancies = (data) => {
   // console.log(cards)
 }
 
+const createDetailVacancy = ({logo, title, company, description, email, experience, type, format, salary, location}) => `
+<article class="detail">
+        <div class="detail__header">
+          <img class="detail__logo" src="${API_URL}/${logo}" alt="Логотип компании ${company}">
+
+          <p class="detail__company">${company}</p>
+          
+          <h2 class="detail__title">${title}</h2>
+        </div>
+
+        <div class="detail__main">
+          <p class="detail__description">${description.replaceAll("\n", "<br>")}</p>
+
+          <ul class="detail__fields">
+            <li class="detail__field">от ${parseInt(salary).toLocaleString("fr")}₽</li>
+            <li class="detail__field">${type}</li>
+            <li class="detail__field">${format}</li>
+            <li class="detail__field">${experience}</li>
+            <li class="detail__field">${location}</li>
+          </ul>
+        </div>
+
+        <p class="detail__resume">Отправляйте резюме на 
+          <a class="blue-text" href="mailto:${email}">${email}</a>
+        </p>
+      </article>
+`;
+
+
+const renderModal = (data) => {
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+
+  const modalMain = document.createElement("div");
+  modalMain.classList.add("modal__main");
+  modalMain.innerHTML = createDetailVacancy(data);
+  
+  const buttonClose = document.createElement("button");
+  buttonClose.classList.add("modal__close");
+  buttonClose.innerHTML = `<span class="icon icon_close"></span>`;
+
+  modalMain.append(buttonClose);
+
+  modal.append(modalMain);
+
+  document.body.append(modal);
+}
+
+const openModal = (id) => {
+  getData(`${URL_VACANCIES}/${id}`, renderModal, renderError)
+}
+
 const renderError = (error) => console.log(error);
 
 const getAndRenderLocations = () => getData(URL_LOCATIONS, renderLocations, renderError);
@@ -73,6 +125,15 @@ const getAndRenderVacancies = () => getData(URL_VACANCIES, renderVacancies, rend
 const init = () => {
   getAndRenderLocations();
   getAndRenderVacancies();
+
+  cardList.addEventListener("click", ({target}) => {
+    const vacancyCard = target.closest(".vacancy");
+    
+    if (vacancyCard) {
+      const vacancyId = vacancyCard.dataset.id;
+      openModal(vacancyId);
+    }
+  })
 }
 
 init();

@@ -9,10 +9,6 @@
   display: flex;
 }
 
-.modal_open {
-  display: flex;
-}
-
 .modal__main {
   position: relative;
   margin: auto;
