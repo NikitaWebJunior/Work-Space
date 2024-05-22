@@ -20,13 +20,21 @@ const getData = async (url, cbSuccess, cbError) => {
   }
 }
 
-const getAndRenderLocations = getData(API_URL + LOCATION_URL, 
-  (data) => {
-     const locations = data.map((location) => ({
-      value: location
-    }))
-    cityChoices.setChoices(locations, "value", "label", true)
-  }, 
-  (error) => console.log(error));
+const renderLocations = (data) => {
+  const locations = data.map((location) => ({
+    value: location
+  }))
+  cityChoices.setChoices(locations, "value", "label", true)
+}
+
+const renderError = (error) => console.error(error);
+
+const getAndRenderLocations = () => getData(API_URL + LOCATION_URL, renderLocations, renderError);
+
+const init = () => {
+  getAndRenderLocations();
+}
+
+init();
 
 
