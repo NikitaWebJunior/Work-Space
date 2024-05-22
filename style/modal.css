@@ -1,0 +1,41 @@
+.modal {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.50);
+  cursor: pointer;
+  padding: 30px;
+  overflow-y: auto;
+  display: flex;
+}
+
+.modal_open {
+  display: flex;
+}
+
+.modal__main {
+  position: relative;
+  margin: auto;
+  cursor: default;
+}
+
+.modal__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  line-height: 0;
+  border-radius: 3px;
+}
+
+.modal__close:focus-visible {
+  outline-color: #ccc;
+}
