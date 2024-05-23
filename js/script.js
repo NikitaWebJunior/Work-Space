@@ -111,6 +111,13 @@ const renderModal = (data) => {
   modal.append(modalMain);
 
   document.body.append(modal);
+
+  document.body.addEventListener("click", ({ target }) => {
+    if (target === target.closest(".modal") || target.closest(".modal__close")) {
+      modal.remove();
+    }
+
+  });
 }
 
 const openModal = (id) => {
